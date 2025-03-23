@@ -1,0 +1,71 @@
+<odoo>
+    <template id="non_group_pdf_export_template">
+        <t t-name="additional_export_pdf_image.non_group_pdf_export_template">
+            <div class="page">
+                <table class="table table-sm">
+                    <thead>
+                        <tr>
+                            <t t-foreach="fields" t-as="field">
+                                <th t-esc="field" style="border: 1px solid black; padding: 5px; text-align: left;"/>
+                            </t>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <t t-foreach="rows" t-as="row">
+                            <tr>
+                                <t t-foreach="row" t-as="cell">
+                                    <td style="border: 1px solid black; padding: 5px;">
+                                        <t t-if="cell and isinstance(cell, bytes)">
+                                            <img t-att-src="'data:image/png;base64,' + cell.decode('utf-8')" style="max-width: 100px; max-height: 100px;"/>
+                                        </t>
+                                        <t t-else="">
+                                            <t t-esc="cell"/>
+                                        </t>
+                                    </td>
+                                </t>
+                            </tr>
+                        </t>
+                    </tbody>
+                </table>
+            </div>
+        </t>
+    </template>
+
+    <template id="report_group_export_pdf">
+        <t t-name="additional_export_pdf_image.report_group_export_pdf">
+            <t t-set="doc" t-value="data"/>
+            <t t-foreach="doc['groups']" t-as="group">
+                <div style="margin-left: ${group.depth * 20}px; border: 1px solid black; padding: 5px; margin-bottom: 5px;">
+                    <div style="background-color:grey; padding: 5px; color: white; border-bottom: 1px solid black;">
+                        <t t-esc="group['name']"/> (<t t-esc="group['count']"/>)
+                    </div>
+                    <table class="table table-condensed" style="border: 1px solid black; border-collapse: collapse; width: 100%;">
+                        <thead>
+                            <tr>
+                                <t t-foreach="doc['fields']" t-as="field">
+                                    <th style="border: 1px solid black; padding: 5px; background-color: #f2f2f2;"><t t-esc="field['label']"/></th>
+                                </t>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="group['records']" t-as="record">
+                                <tr>
+                                    <t t-foreach="record" t-as="value">
+                                        <td style="border: 1px solid black; padding: 5px;">
+                                            <t t-if="value and isinstance(value, bytes)">
+                                                <img t-att-src="'data:image/png;base64,' + value.decode('utf-8')" style="max-width: 100px; max-height: 100px;"/>
+                                            </t>
+                                            <t t-else="">
+                                                <t t-esc="value"/>
+                                            </t>
+                                        </td>
+                                    </t>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
