@@ -6,7 +6,7 @@
                     <thead>
                         <tr>
                             <t t-foreach="fields" t-as="field">
-                                <th t-esc="field" style="border: 1px solid black; padding: 5px; text-align: left;"/>
+                                <th t-esc="field['label']" style="border: 1px solid black; padding: 5px; text-align: left;"/>
                             </t>
                         </tr>
                     </thead>

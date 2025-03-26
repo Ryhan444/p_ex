@@ -110,7 +110,7 @@ class PdfExport(ExportFormat, http.Controller):
 
         return result
     
-    def from_data(self, fields, rows):
+    def from_data(self, fields, columns_headers, rows):
         base_url = request.env['ir.config_parameter'].sudo().get_param('report.url') or \
                    request.env['ir.config_parameter'].sudo().get_param('web.base.url')
         
@@ -170,8 +170,8 @@ def _write_row(self, row, column, data):
             self.write_cell(row, current_column, value)
     return row + 1, 0
 
-def from_data(self, fields, rows):
-    with ExportXlsxWriter(fields, len(rows)) as xlsx_writer:
+def from_data(self, fields, columns_headers, rows):
+    with ExportXlsxWriter(fields, columns_headers, len(rows)) as xlsx_writer:
         for row_index, row in enumerate(rows):
             for cell_index, cell_value in enumerate(row):
                 if isinstance(cell_value, bytes):
