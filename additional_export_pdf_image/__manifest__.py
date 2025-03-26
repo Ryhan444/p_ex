@@ -2,7 +2,7 @@
     "name": "Additional Export PDF in All Module",
     "category": "Other",
     "sequence": 150,
-    "version": "17.0.0.0.0",
+    "version": "18.0.0.0.0",
     "license": "OPL-1",
     "summary": "Additional Export PDF in All Module",
     "author": "Split Developers",
