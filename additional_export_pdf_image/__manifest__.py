@@ -5,7 +5,7 @@
     "version": "17.0.0.0.0",
     "license": "OPL-1",
     "summary": "Additional Export PDF in All Module",
-    "author": "Split Developers",
+    "author": "ARA Split Developers",
     "website": "",
     "support": "",
     "description": """Additional Export PDF in All Module""",
