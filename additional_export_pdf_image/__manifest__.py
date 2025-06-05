@@ -17,7 +17,7 @@
     "assets": {},
     "license": "OPL-1",
     "application": False,
-    "price" : 96.00,
+    "price" : 37.00,
     "currency": "USD",
     "images": ['static/description/banner.png'],
 }
